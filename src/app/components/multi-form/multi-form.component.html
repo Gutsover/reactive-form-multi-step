@@ -1,5 +1,6 @@
 <div class="container">
   <form (ngSubmit)="submit()" [formGroup]="formContainer">
+      <h1 class="fr-h1">Formulaire</h1>
     <!-- ____________________________ part1_________________________________________________ -->
     <div class="step" formGroupName="part1" *ngIf="step == 1">
       <div class="sirets">
@@ -14,6 +15,8 @@
           id="siret"
           formControlName="siret1"
           name="siret1"
+          maxlength="9"
+          oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
         />
         <input
           class="siret siret2"
@@ -25,6 +28,8 @@
           id="siret"
           formControlName="siret2"
           name="siret2"
+          maxlength="6"
+          oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
         />
       </div>
     </div>
@@ -73,7 +78,7 @@
       <div class="step">YOU'RE WINNER BITCH!</div>
       <h1>Enterprise</h1>
 
-      <p>N° Siret : {{ siret1.value + siret2.value }}</p> 
+      <p>N° Siret : {{ siret1.value + siret2.value }}</p>
       <p>Téléphone : {{ tel.value }}</p>
       <p>Date de recensement : {{ year.value }}</p>
     </div>

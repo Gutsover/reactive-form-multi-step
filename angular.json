@@ -27,9 +27,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "./node_modules/@gouvfr/dsfr/dist/dsfr/dsfr.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/@gouvfr/dsfr/dist/dsfr/dsfr.module.min.js",
+              "./node_modules/@gouvfr/dsfr/dist/dsfr/dsfr.nomodule.min.js"
+            ]
           },
           "configurations": {
             "production": {

@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-multi-form',
@@ -16,7 +17,7 @@ export class MultiFormComponent implements OnInit {
   submitted: any = false;
   formContainer!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private route: Router) {}
 
   ngOnInit(): void {
     this.formContainer = this.fb.group({
@@ -59,6 +60,10 @@ export class MultiFormComponent implements OnInit {
     console.log('Date de recensement : ' + this.year.value);
     console.log('siret : ' + this.siret1.value + this.siret2.value);
     this.step = this.step + 1;
+
+    if (this.step == 4) {
+      this.route.navigate(['/validate']);
+    }
   }
 
   previous() {
