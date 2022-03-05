@@ -1,15 +1,23 @@
-<div class="container">
+<div class="fr-container fr-mb-5w">
   <form (ngSubmit)="submit()" [formGroup]="formContainer">
-      <h1 class="fr-h1">Formulaire</h1>
+    <h1 class="fr-h1">Formulaire</h1>
     <!-- ____________________________ part1_________________________________________________ -->
     <div class="step" formGroupName="part1" *ngIf="step == 1">
-      <div class="sirets">
-        <label for="siret">Siret</label>
+      <div
+        class="fr-input-group"
+        [ngClass]="{
+          'fr-input-group--error':
+            (siret1.errors && siret1.touched) ||
+            (siret2.errors && siret2.touched),
+          'fr-input-group--valid': siret1.valid && siret2.valid
+        }"
+      >
+        <label class="fr-label" for="siret">Siret</label>
         <input
-          class="siret siret1"
+          class="fr-input"
           [ngClass]="{
-            'is-invalid': siret1.errors && siret1.touched,
-            'is-valid': siret1.valid
+            'fr-input--error': siret1.errors && siret1.touched,
+            'fr-input--valid': siret1.valid
           }"
           type="number"
           id="siret"
@@ -19,10 +27,10 @@
           oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
         />
         <input
-          class="siret siret2"
+          class="fr-input"
           [ngClass]="{
-            'is-invalid': siret2.errors && siret2.touched,
-            'is-valid': siret2.valid
+            'fr-input--error': siret2.errors && siret2.touched,
+            'fr-input--valid': siret2.valid
           }"
           type="number"
           id="siret"
@@ -32,70 +40,159 @@
           oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
         />
       </div>
+      <p
+        id="text-input-error-desc-error"
+        class="fr-error-text"
+        *ngIf="part1.invalid && part1.submitted"
+      >
+        Le numéro de siret est composé de 14 chiffres. Veuillez les renseigner.
+      </p>
     </div>
     <!-- ____________________________________________Part2____________________________________________ -->
     <div class="step" formGroupName="part2" *ngIf="step == 2">
-      <div class="sirets">
-        <label for="siret">Siret</label>
+      <!-- ______________________________________________________________ -->
+      <div
+        class="fr-input-group"
+        [ngClass]="{
+          'fr-input-group--error':
+            (siret1.errors && siret1.touched) ||
+            (siret2.errors && siret2.touched),
+          'fr-input-group--valid': siret1.valid && siret2.valid
+        }"
+      >
+        <label class="fr-label" for="siret">Siret</label>
         <input
-          class="siret siret1"
+          class="fr-input"
           [ngClass]="{
-            'is-invalid': siret1.errors && siret1.dirty,
-            'is-valid': siret1.valid
+            'fr-input--error': siret1.errors && siret1.touched,
+            'fr-input--valid': siret1.valid
           }"
           type="number"
           id="siret"
           formControlName="siret1"
           name="siret1"
+          maxlength="9"
+          oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
           value="{{ siret1.value }}"
         />
         <input
-          class="siret siret2"
+          class="fr-input"
           [ngClass]="{
-            'is-invalid': siret2.errors && siret2.touched,
-            'is-valid': siret2.valid
+            'fr-input--error': siret2.errors && siret2.touched,
+            'fr-input--valid': siret2.valid
           }"
           type="number"
           id="siret"
           formControlName="siret2"
           name="siret2"
+          maxlength="6"
+          oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
           value="{{ siret2.value }}"
         />
       </div>
+      <p
+        id="text-input-error-desc-error"
+        class="fr-error-text"
+        *ngIf="part1.invalid && part1.submitted"
+      >
+        Le numéro de siret est composé de 14 chiffres. Veuillez les renseigner.
+      </p>
+
       <!-- ______________________________________________________________ -->
-      <div class="form-group">
-        <label for="tel">Telephone</label>
-        <input type="number" id="tel" formControlName="tel" name="tel" />
+      <div
+        class="fr-input-group"
+        [ngClass]="{
+          'fr-input-group--error': tel.errors && tel.touched,
+          'fr-input-group--valid': tel.valid
+        }"
+      >
+        <label class="fr-label" for="tel">Telephone</label>
+        <input
+          class="fr-input"
+          [ngClass]="{
+            'fr-input--error': tel.errors && tel.touched,
+            'fr-input--valid': tel.valid
+          }"
+          type="number"
+          id="tel"
+          formControlName="tel"
+          name="tel"
+          maxlength="10"
+          oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+        />
+        <p
+          id="text-input-error-desc-error"
+          class="fr-error-text"
+          *ngIf="tel.invalid && part2.submitted"
+        >
+          Un numéro de téléphone est composé de 10 chiffres. Veuillez le
+          renseigner.
+        </p>
       </div>
 
-      <div class="form-group">
-        <label for="year">Année</label>
-        <input type="number" id="year" formControlName="year" name="year" />
+      <div
+        class="fr-input-group"
+        [ngClass]="{
+          'fr-input-group--error': year.errors && year.touched,
+          'fr-input-group--valid': year.valid
+        }"
+      >
+        <label class="fr-label" for="year">Année</label>
+        <input
+          class="fr-input"
+          [ngClass]="{
+            'fr-input--error': year.errors && year.touched,
+            'fr-input--valid': year.valid
+          }"
+          type="number"
+          id="year"
+          formControlName="year"
+          name="year"
+          maxlength="4"
+          oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+        />
+        <p
+          id="text-input-error-desc-error"
+          class="fr-error-text"
+          *ngIf="year.invalid && part2.submitted"
+        >
+          Veuillez indiquer l'année de recensement de l'établissement au format
+          : "2022"
+        </p>
       </div>
     </div>
     <!-- ____________________________________________Part3____________________________________________ -->
     <div class="step" *ngIf="step == 3">
-      <div class="step">YOU'RE WINNER BITCH!</div>
       <h1>Enterprise</h1>
 
-      <p>N° Siret : {{ siret1.value + siret2.value }}</p>
-      <p>Téléphone : {{ tel.value }}</p>
+      <p>N° Siret : {{ siret1.value.toString() + siret2.value.toString() }}</p>
+      <p>Téléphone : 0{{ tel.value }}</p>
       <p>Date de recensement : {{ year.value }}</p>
     </div>
     <!-- ____________________________________________Validation____________________________________________ -->
-    <div class="group-btn">
-      <button type="button" (click)="previous()" *ngIf="step != 1">
-        Previous
-      </button>
-      <button
-        type="submit"
-        *ngIf="
-          formContainer.get('part1')!.status === 'VALID' ||
-          formContainer.get('part2')!.status === 'VALID'
-        "
-      >
-        Valider
-      </button>
-    </div>
+    <ul class="fr-btns-group fr-btns-group--inline fr-mt-3w">
+      <li>
+        <button
+          type="submit"
+          class="fr-btn"
+          *ngIf="
+            formContainer.get('part1')!.status === 'VALID' ||
+            formContainer.get('part2')!.status === 'VALID'
+          "
+        >
+          Valider
+        </button>
+      </li>
+      <li>
+        <button
+          type="button"
+          (click)="previous()"
+          *ngIf="step != 1"
+          class="fr-btn fr-btn--secondary"
+        >
+          Précédent
+        </button>
+      </li>
+    </ul>
   </form>
 </div>

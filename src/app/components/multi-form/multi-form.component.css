@@ -1,27 +1,4 @@
-.container {
-    width: 60%;
-    margin: auto;
-    background-color: black;
-    color: whitesmoke;
-    display: flex;
-    justify-content: center;
-    padding: 5rem;
-}
 
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.sirets {
-    display: flex;
-    align-items: center;
-}
 
 input[type=number] {
     appearance: textfiel;
@@ -32,22 +9,3 @@ input::-webkit-outer-spin-button {
     appearance: none;
 }
 
-input {
-    margin: 1rem;
-}
-
-button {
-    margin: 2rem;
-}
-
-.error {
-    color: red;
-}
-
-.is-invalid {
-    border-bottom: 3px solid red;
-}
-
-.is-valid {
-    border-bottom: 3px solid green;
-}
