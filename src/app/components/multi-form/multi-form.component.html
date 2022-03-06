@@ -13,37 +13,40 @@
         }"
       >
         <label class="fr-label" for="siret">Siret</label>
-        <input
-          class="fr-input"
-          [ngClass]="{
-            'fr-input--error': siret1.errors && siret1.touched,
-            'fr-input--valid': siret1.valid
-          }"
-          type="number"
-          id="siret"
-          formControlName="siret1"
-          name="siret1"
-          maxlength="9"
-          oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-        />
-        <input
-          class="fr-input"
-          [ngClass]="{
-            'fr-input--error': siret2.errors && siret2.touched,
-            'fr-input--valid': siret2.valid
-          }"
-          type="number"
-          id="siret"
-          formControlName="siret2"
-          name="siret2"
-          maxlength="6"
-          oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-        />
+        <div class="container__input">
+          <input
+            class="fr-input"
+            [ngClass]="{
+              'fr-input--error': siret1.errors && siret1.touched,
+              'fr-input--valid': siret1.valid
+            }"
+            type="number"
+            id="siret"
+            formControlName="siret1"
+            name="siret1"
+            maxlength="9"
+            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+            (keyup)="focusNextInput(9)"
+          />
+          <input
+            class="fr-input"
+            [ngClass]="{
+              'fr-input--error': siret2.errors && siret2.touched,
+              'fr-input--valid': siret2.valid
+            }"
+            type="number"
+            id="siret2"
+            formControlName="siret2"
+            name="siret2"
+            maxlength="6"
+            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+          />
+        </div>
       </div>
       <p
         id="text-input-error-desc-error"
         class="fr-error-text"
-        *ngIf="part1.invalid && part1.submitted"
+        *ngIf="part1.invalid && part1.touched"
       >
         Le numéro de siret est composé de 14 chiffres. Veuillez les renseigner.
       </p>
@@ -93,7 +96,7 @@
       <p
         id="text-input-error-desc-error"
         class="fr-error-text"
-        *ngIf="part1.invalid && part1.submitted"
+        *ngIf="part1.invalid && part1.touched"
       >
         Le numéro de siret est composé de 14 chiffres. Veuillez les renseigner.
       </p>
@@ -123,7 +126,7 @@
         <p
           id="text-input-error-desc-error"
           class="fr-error-text"
-          *ngIf="tel.invalid && part2.submitted"
+          *ngIf="tel.invalid && tel.touched"
         >
           Un numéro de téléphone est composé de 10 chiffres. Veuillez le
           renseigner.
@@ -154,7 +157,7 @@
         <p
           id="text-input-error-desc-error"
           class="fr-error-text"
-          *ngIf="year.invalid && part2.submitted"
+          *ngIf="year.invalid && year.touched"
         >
           Veuillez indiquer l'année de recensement de l'établissement au format
           : "2022"

@@ -9,3 +9,20 @@ input::-webkit-outer-spin-button {
     appearance: none;
 }
 
+.container__input {
+    display: flex;
+}
+
+input[type=number] {
+    text-align: center;
+}
+
+#siret {
+    width: 9rem;
+    margin-right: 1rem;
+}
+
+#siret2 {
+    width: 6rem;
+}
+

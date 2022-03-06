@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./multi-form.component.css'],
 })
 export class MultiFormComponent implements OnInit {
+  element: any;
   step: any = 1;
   submitted: any = false;
   formContainer!: FormGroup;
@@ -42,6 +43,13 @@ export class MultiFormComponent implements OnInit {
         ]),
       }),
     });
+  }
+
+  focusNextInput(maxlength: number) {
+    this.element = this.siret1.value;
+    if (this.element.toString().length === maxlength) {
+      document.getElementById('siret2')?.focus();
+    }
   }
 
   submit() {
